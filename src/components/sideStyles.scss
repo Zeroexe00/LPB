@@ -2,3 +2,11 @@ h4{
     margin-top : 15px;
     margin-bottom: 15px;
 }
+div.sidebar{
+    display: flex;
+}
+@media screen and (max-width: 420px){
+    div.sidebar{
+        display: none !important;
+    }
+}
