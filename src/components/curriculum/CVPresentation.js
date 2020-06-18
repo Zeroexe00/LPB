@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "../styles/CVPresentationStyles.scss"
+import styles from "../../styles/CVPresentationStyles.scss"
 
 
 const CVPresentation = () => (

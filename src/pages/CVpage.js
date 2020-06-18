@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
-import CVPresentation from "../components/CVPresentation"
+import CVPresentation from "../components/curriculum/CVPresentation"
 
 const CVpage = () => (
   <Layout>
