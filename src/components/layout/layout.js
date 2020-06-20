@@ -39,13 +39,13 @@ const Layout = ({ children }) => {
         style={{
           display:'flex',
           margin: 0,
-          maxWidth: 960,
+          maxWidth: '100%',
+          width: '100%',
           padding: `0px 1em 1.45rem`,
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
-        
+      {children}
       </div>
       </div>
     </>
