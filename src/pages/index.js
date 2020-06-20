@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import { Grid,Typography  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Img from 'gatsby-image';
-import { useStaticQuery as staticQ, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import "../styles/newIndex.scss"
 
@@ -42,21 +42,28 @@ const styles = makeStyles(() => ({
   }
 }));
 
-const newIndexPage = () => {
-  const data = staticQ(graphql`
+const indexPage = () => {
+  const data = useStaticQuery(graphql`
     {
-      file(relativePath: {eq: "img-perfil-exe.jpeg"}) {
+      file(relativePath: {eq: "perfil.jpeg"}) {
         childImageSharp {
           fixed(height: 300, width: 200) {
             base64
-            height
             src
             width
-            aspectRatio
-            originalName
             srcSet
+            originalName
+            height
+            aspectRatio
           }
         }
+      }
+      site {
+          siteMetadata {
+            title
+            description
+            author
+          }
       }
     }
   `)
@@ -64,7 +71,7 @@ const newIndexPage = () => {
   const classes = styles();
   return (
     <div>
-        <SEO title="interactive home -inprogress-" />
+        <SEO title="interactive home -inprogress-" site={data.site} />
         <div className={classes.root}>
           {Array(100).fill({}).map(()=>(
             <div className={'circle-container'}>
@@ -94,4 +101,4 @@ const newIndexPage = () => {
   )
 }
 
-export default newIndexPage
+export default indexPage
