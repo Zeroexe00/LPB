@@ -1,11 +1,10 @@
 import React from "react"
 
-import SEO from "../components/seo"
 import { Grid,Typography  } from '@material-ui/core';
+import Perfil from '../components/Perfil'
+import SeoData from '../components/SeoData'
+import useMobileDetect from '../hooks/useMobileDetect'
 import { makeStyles } from '@material-ui/core/styles';
-import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby'
-
 import "../styles/newIndex.scss"
 
 const styles = makeStyles(() => ({
@@ -42,45 +41,22 @@ const styles = makeStyles(() => ({
   }
 }));
 
-const indexPage = () => {
-  const data = useStaticQuery(graphql`
-    {
-      file(relativePath: {eq: "perfil.jpeg"}) {
-        childImageSharp {
-          fixed(height: 300, width: 200) {
-            base64
-            src
-            width
-            srcSet
-            originalName
-            height
-            aspectRatio
-          }
-        }
-      }
-      site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-      }
-    }
-  `)
+function IndexPage() {
 
   const classes = styles();
+  const isMobile = useMobileDetect();
   return (
     <div>
-        <SEO title="interactive home -inprogress-" site={data.site} />
+      <SeoData title="Exequiel Alvarez" description="CV Page"></SeoData>
         <div className={classes.root}>
-          {Array(100).fill({}).map(()=>(
-            <div className={'circle-container'}>
+          {Array(100).fill({}).map((_,i)=>(
+            <div key={i} className={'circle-container'}>
               <div className={'circle'}></div>
             </div>
           ))}
-          <Grid container justify="center" alignItems="center" direction="column">
-            <Grid item md={6}><Img fixed={data.file.childImageSharp.fixed} alt="Exequiel" /></Grid>
-            <Grid item md={6}>
+          <Grid container justify="center" alignItems="center" direction={isMobile ? 'row' : 'column'} >
+            <Grid item md={6} xs={12}><Perfil /></Grid>
+            <Grid item md={6} xs={12}>
               <Typography component="h2" color="primary" className={'message'} align="center">
                 Hola mi nombre es Exequiel Alvarez, soy desarrollador Frontend
               </Typography>
@@ -101,4 +77,4 @@ const indexPage = () => {
   )
 }
 
-export default indexPage
+export default IndexPage
