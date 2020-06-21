@@ -11,33 +11,10 @@ const styles = makeStyles(() => ({
   root: {
     color: '#bbb',
     width: '100%',
-    height: '100vh',
-    margin: 15,
+    minHeight: '100vh',
+    margin: 0,
     display: 'flex',
-
-  },
-  blockName: {
-    width: '100%',
-    background: 'linear-gradient(to top left , #DFDFDF 20%, transparent)',
-    '&:hover': {
-      background: 'linear-gradient(to top left , #DFDFDF 20%, transparent)',
-      border: '2px solid gray'
-    }
-  },
-  blockAbout: {
-    width: '100%',
-    background: 'linear-gradient(to top right , #DFDFDF 20%, transparent)'
-
-  },
-  blockCurriculum: {
-    width: '100%',
-    background: 'linear-gradient(to bottom left , #DFDFDF 20%, transparent)'
-
-  },
-  blockProjects: {
-    width: '100%',
-    background: 'linear-gradient(to bottom right , #DFDFDF 20%, transparent)'
-
+    padding: '1%'
   }
 }));
 
@@ -55,7 +32,11 @@ function IndexPage() {
             </div>
           ))}
           <Grid container justify="center" alignItems="center" direction={isMobile ? 'row' : 'column'} >
-            <Grid item md={6} xs={12}><Perfil /></Grid>
+            <Grid item md={6} xs={12}>
+              <Grid container justify="center" alignItems="center">
+                <Perfil />
+              </Grid>
+            </Grid>
             <Grid item md={6} xs={12}>
               <Typography component="h2" color="primary" className={'message'} align="center">
                 Hola mi nombre es Exequiel Alvarez, soy desarrollador Frontend
