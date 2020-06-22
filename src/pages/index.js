@@ -3,12 +3,14 @@ import React from "react"
 import { Grid,Typography  } from '@material-ui/core';
 import Perfil from '../components/Perfil'
 import SeoData from '../components/SeoData'
+import NavButton from '../components/NavButton'
 import useMobileDetect from '../hooks/useMobileDetect'
 import { makeStyles } from '@material-ui/core/styles';
 import "../styles/newIndex.scss"
 
 const styles = makeStyles(() => ({
   root: {
+    zIndex: 20,
     color: '#bbb',
     width: '100%',
     minHeight: '100vh',
@@ -24,17 +26,14 @@ function IndexPage() {
   const isMobile = useMobileDetect();
   return (
     <div>
-      <SeoData title="Exequiel Alvarez" description="CV Page"></SeoData>
+      <SeoData title="Exequiel Alvarez" description="Presentation Page"></SeoData>
         <div className={classes.root}>
-          {Array(100).fill({}).map((_,i)=>(
-            <div key={i} className={'circle-container'}>
-              <div className={'circle'}></div>
-            </div>
-          ))}
           <Grid container justify="center" alignItems="center" direction={isMobile ? 'row' : 'column'} >
             <Grid item md={6} xs={12}>
               <Grid container justify="center" alignItems="center">
+                <NavButton direction="/" text="Projects" />
                 <Perfil />
+                <NavButton direction="/" text="Curriculum" />
               </Grid>
             </Grid>
             <Grid item md={6} xs={12}>
@@ -54,6 +53,11 @@ function IndexPage() {
             </Grid>
           </Grid>
         </div>
+        {Array(50).fill({}).map((_,i)=>(
+            <div key={i} className={'circle-container'}>
+              <div className={'circle'}></div>
+            </div>
+          ))}
     </div>
   )
 }
